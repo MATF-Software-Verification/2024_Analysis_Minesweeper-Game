@@ -1,8 +1,9 @@
 #include <iostream>
 using namespace std;
 
-int CharToInt(char c);
-char IntToChar(int x);
+int CharToInt(char);
+char IntToChar(int);
+int GetRandom(int, int);
 
 enum Difficulty
 {
@@ -42,8 +43,8 @@ public:
     void DisplayCell();
     void SetBomb();
     void IncreaseValue();
-    void SetFlagged();
-    void OpenCell();
+    bool TriggerFlag();
+    bool OpenCell();
 };
 
 class Board
@@ -52,12 +53,15 @@ private:
     int size;
     Cell **arr;
     bool boardGenerated;
+    int mines;
 
 public:
-    Board(int);
+    Board(int, int);
     void ShowBoard();
     bool PlayerSelect(int, int, PlayerMove);
     void GenerateBoard(int, int);
+    void SetValuesAroundMine(int, int);
+    bool ClickCell(int, int);
 };
 
 class Minesweeper
@@ -66,6 +70,7 @@ private:
     Board *board;
     int size;
     Difficulty difficulty;
+    int mines;
 
 public:
     Minesweeper();

@@ -10,6 +10,8 @@ void Minesweeper::Play()
     SetDifficulty();
     CreateBoard();
     board->ShowBoard();
+    GetInput();
+    board->ShowBoard();
 }
 void Minesweeper::Instructions()
 {
@@ -37,54 +39,59 @@ void Minesweeper::CreateBoard()
     {
     case Beginner:
         size = 9;
+        mines = 10;
         break;
     case Intermediate:
         size = 15;
+        mines = 40;
         break;
     case Expert:
         size = 25;
+        mines = 99;
         break;
     default:
         break;
     }
-    board = new Board(size);
+    board = new Board(size, mines);
 }
 void Minesweeper::GetInput()
 {
     int row = 1, col = 1;
     PlayerMove playerMove;
-    do
-    {
-        if (row < 1 || row > size)
-        {
-            cout << "\nPlease enter valid input!\n";
-        }
-        cout << "\nEnter row (1 - 9): ";
-        cin >> row;
-    } while (row < 1 || row > size);
-    do
-    {
-        if (col < 1 || col > size)
-        {
-            cout << "\nPlease enter valid input!\n";
-        }
-        cout << "\nEnter col (1 - 9): ";
-        cin >> col;
-    } while (col < 1 || col > size);
-
     int input = 1;
     do
     {
-        if (input < 1 || input > 2)
+        do
         {
-            cout << "\nPlease enter valid input!\n";
-        }
-        cout << "\nSelect operation (1 - Open | 2 - Flag) : ";
-        cin >> input;
-    } while (input < 1 || input > 2);
-    if (input == 1)
-        playerMove = Open;
-    else
-        playerMove = Mark;
-    board->PlayerSelect(row, col, playerMove);
+            if (row < 1 || row > size)
+            {
+                cout << "\nPlease enter valid input!\n";
+            }
+            cout << "\nEnter row (1 - 9): ";
+            cin >> row;
+        } while (row < 1 || row > size);
+        do
+        {
+            if (col < 1 || col > size)
+            {
+                cout << "\nPlease enter valid input!\n";
+            }
+            cout << "\nEnter col (1 - 9): ";
+            cin >> col;
+        } while (col < 1 || col > size);
+
+        do
+        {
+            if (input < 1 || input > 2)
+            {
+                cout << "\nPlease enter valid input!\n";
+            }
+            cout << "\nSelect operation (1 - Open | 2 - Flag/UnFlag) : ";
+            cin >> input;
+        } while (input < 1 || input > 2);
+        if (input == 1)
+            playerMove = Open;
+        else
+            playerMove = Mark;
+    } while (!board->PlayerSelect(row - 1, col - 1, playerMove));
 }

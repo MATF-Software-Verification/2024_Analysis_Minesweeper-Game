@@ -23,9 +23,13 @@ void Cell::DisplayCell()
         break;
     }
 }
-void Cell::OpenCell()
+bool Cell::OpenCell()
 {
-    status = Unlocked;
+    if (status == Unlocked)
+        return false;
+    else
+        status = Unlocked;
+    return true;
 }
 void Cell::SetBomb()
 {
@@ -41,8 +45,13 @@ void Cell::IncreaseValue()
         data = IntToChar(x);
     }
 }
-void Cell::SetFlagged()
+bool Cell::TriggerFlag()
 {
+    if (status == Unlocked)
+        return false;
     if (status == Locked)
         status = Flagged;
+    else
+        status = Locked;
+    return true;
 }

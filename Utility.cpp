@@ -1,4 +1,5 @@
 #include "Header.h"
+#include <random>
 using namespace std;
 
 int CharToInt(char c)
@@ -16,4 +17,12 @@ char IntToChar(int x)
         return (char)x + 48;
     }
     return '-';
+}
+
+random_device rd;
+mt19937 gen(rd());
+int GetRandom(int min, int max)
+{
+    uniform_int_distribution<int> dist(min, max);
+    return dist(gen);
 }
