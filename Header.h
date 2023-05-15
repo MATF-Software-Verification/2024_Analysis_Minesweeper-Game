@@ -1,9 +1,17 @@
 #include <iostream>
+#include <queue>
 using namespace std;
 
 int CharToInt(char);
 char IntToChar(int);
 int GetRandom(int, int);
+
+enum GameState
+{
+    Playing,
+    Won,
+    Lost
+};
 
 enum Difficulty
 {
@@ -27,8 +35,8 @@ enum Status
 
 enum Content
 {
-    Bomb,
-    Number
+    Number,
+    Bomb
 };
 
 class Cell
@@ -44,7 +52,11 @@ public:
     void SetBomb();
     void IncreaseValue();
     bool TriggerFlag();
-    bool OpenCell();
+    int OpenCell();
+    bool IsUnlocked();
+    bool IsFlagged();
+    bool CheckForZero();
+    bool CheckIfBomb();
 };
 
 class Board
@@ -54,6 +66,9 @@ private:
     Cell **arr;
     bool boardGenerated;
     int mines;
+    bool bombClicked;
+    vector<int> xCord;
+    vector<int> yCord;
 
 public:
     Board(int, int);
@@ -62,6 +77,9 @@ public:
     void GenerateBoard(int, int);
     void SetValuesAroundMine(int, int);
     bool ClickCell(int, int);
+    void OpenAdjacentCells(int, int, queue<int> *, queue<int> *, vector<int> *, vector<int> *);
+    bool GetBombClick();
+    void UnlockBombs();
 };
 
 class Minesweeper
@@ -71,6 +89,7 @@ private:
     int size;
     Difficulty difficulty;
     int mines;
+    GameState gameState;
 
 public:
     Minesweeper();

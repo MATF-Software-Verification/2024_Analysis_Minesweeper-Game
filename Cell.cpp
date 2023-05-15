@@ -5,6 +5,7 @@ Cell::Cell()
 {
     data = '0';
     status = Locked;
+    content = Number;
 }
 void Cell::DisplayCell()
 {
@@ -23,18 +24,43 @@ void Cell::DisplayCell()
         break;
     }
 }
-bool Cell::OpenCell()
+int Cell::OpenCell()
+{
+    status = Unlocked;
+    return CharToInt(data);
+}
+bool Cell::IsUnlocked()
 {
     if (status == Unlocked)
-        return false;
+        return true;
     else
-        status = Unlocked;
-    return true;
+        return false;
+}
+bool Cell::IsFlagged()
+{
+    if (status == Flagged)
+        return true;
+    else
+        return false;
+}
+bool Cell::CheckForZero()
+{
+    if (data == '0')
+        return true;
+    else
+        return false;
 }
 void Cell::SetBomb()
 {
     content = Bomb;
     data = '*';
+}
+bool Cell::CheckIfBomb()
+{
+    if (content == Bomb)
+        return true;
+    else
+        return false;
 }
 void Cell::IncreaseValue()
 {

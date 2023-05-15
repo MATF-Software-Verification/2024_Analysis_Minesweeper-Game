@@ -3,15 +3,25 @@ using namespace std;
 
 Minesweeper::Minesweeper()
 {
-}
-void Minesweeper::Play()
-{
     Instructions();
     SetDifficulty();
     CreateBoard();
-    board->ShowBoard();
-    GetInput();
-    board->ShowBoard();
+    gameState = Playing;
+}
+void Minesweeper::Play()
+{
+    do
+    {
+        board->ShowBoard();
+        GetInput();
+    } while (gameState == Playing);
+    if (gameState == Lost)
+    {
+        cout << "You've clicked on a bomb!\n";
+        board->UnlockBombs();
+        board->ShowBoard();
+        cout << "Better luck next time!\n";
+    }
 }
 void Minesweeper::Instructions()
 {
@@ -61,13 +71,18 @@ void Minesweeper::GetInput()
     int input = 1;
     do
     {
+        if (board->GetBombClick())
+        {
+            gameState = Lost;
+            return;
+        }
         do
         {
             if (row < 1 || row > size)
             {
                 cout << "\nPlease enter valid input!\n";
             }
-            cout << "\nEnter row (1 - 9): ";
+            cout << "\nEnter row (1 - " << size << "): ";
             cin >> row;
         } while (row < 1 || row > size);
         do
@@ -76,7 +91,7 @@ void Minesweeper::GetInput()
             {
                 cout << "\nPlease enter valid input!\n";
             }
-            cout << "\nEnter col (1 - 9): ";
+            cout << "\nEnter col (1 - " << size << "): ";
             cin >> col;
         } while (col < 1 || col > size);
 

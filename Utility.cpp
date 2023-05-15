@@ -18,7 +18,6 @@ char IntToChar(int x)
     }
     return '-';
 }
-
 random_device rd;
 mt19937 gen(rd());
 int GetRandom(int min, int max)
