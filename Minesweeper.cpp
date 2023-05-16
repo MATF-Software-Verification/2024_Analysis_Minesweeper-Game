@@ -1,6 +1,8 @@
 #include "Header.h"
 using namespace std;
-
+/*
+    Minesweeper class Constructor
+*/
 Minesweeper::Minesweeper()
 {
     Instructions();
@@ -8,6 +10,9 @@ Minesweeper::Minesweeper()
     CreateBoard();
     gameState = Playing;
 }
+/*
+    The main game logic function
+*/
 void Minesweeper::Play()
 {
     do
@@ -30,12 +35,22 @@ void Minesweeper::Play()
         cout << "Thanks for playing!\n";
     }
 }
+/*
+    Displays information for player
+*/
 void Minesweeper::Instructions()
 {
     cout << "\nWELCOME TO THE MINESWEEPER GAME!\n";
     cout << "\nThese are the rules: \n";
     cout << "\n- The board is divided into cells, with mines randomly distributed.\n- To win, you need to open all the cells. \n- The number on a cell shows the number of mines adjacent to it. Using this information, you can determine cells that are safe, and cells that contain mines.\n- Interact, evolve and enjoy!\n\n";
 }
+/*
+    Gets player input to set Difficulty level
+    Three Difficulty Levels
+        - Beginner
+        - Intermediate
+        - Expert
+*/
 void Minesweeper::SetDifficulty()
 {
     int x = 1;
@@ -50,27 +65,35 @@ void Minesweeper::SetDifficulty()
     } while (x < 1 || x > 3);
     difficulty = (Difficulty)(x - 1);
 }
+/*
+    Initializes and allocates the Board class object depending upon difficulty level
+*/
 void Minesweeper::CreateBoard()
 {
     switch (difficulty)
     {
     case Beginner:
-        size = 9;
-        mines = 10;
+        size = EASY_SIZE;
+        mines = EASY_MINES;
         break;
     case Intermediate:
-        size = 15;
-        mines = 40;
+        size = MEDIUM_SIZE;
+        mines = MEDIUM_MINES;
         break;
     case Expert:
-        size = 25;
-        mines = 99;
+        size = HARD_SIZE;
+        mines = HARD_MINES;
         break;
     default:
         break;
     }
     board = new Board(size, mines);
 }
+/*
+    Get player input for position of cell and move to perform
+    Position of cell - row and column
+    Player move - open or mark
+*/
 void Minesweeper::GetInput()
 {
     int row = 1, col = 1;
@@ -118,6 +141,9 @@ void Minesweeper::GetInput()
     if (playerMove == Open)
         CheckWin();
 }
+/*
+    Check if number of cells opened is equal to ( total size - number of mines )
+*/
 void Minesweeper::CheckWin()
 {
     int cellsOpened = board->GetCellsOpened();

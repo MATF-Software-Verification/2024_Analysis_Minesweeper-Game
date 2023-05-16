@@ -2,7 +2,9 @@
 #include <vector>
 #include <queue>
 using namespace std;
-
+/*
+    Board class Constructor
+*/
 Board::Board(int _size, int _mines)
 {
     cellsOpened = 0;
@@ -16,6 +18,9 @@ Board::Board(int _size, int _mines)
         arr[i] = new Cell[size]();
     }
 }
+/*
+    Displays the entire board along with rows and columns
+*/
 void Board::ShowBoard()
 {
     cout << "\n     ";
@@ -61,6 +66,9 @@ void Board::ShowBoard()
     }
     cout << "\n";
 }
+/*
+    Sets all Bomb containing cells to Unlocked
+*/
 void Board::UnlockBombs()
 {
     for (int i = 0; i < mines; i++)
@@ -68,6 +76,9 @@ void Board::UnlockBombs()
         arr[xCord[i]][yCord[i]].OpenCell();
     }
 }
+/*
+    Performs open operation on a cell of player's choice
+*/
 bool Board::ClickCell(int row, int col)
 {
     if (arr[row][col].IsFlagged())
@@ -111,6 +122,10 @@ bool Board::ClickCell(int row, int col)
     }
     return true;
 }
+/*
+    Opens the cells adjacent (horizontally and vertically) to current cell
+    If they dont exist in the vectors, then enqueue the coordinates
+*/
 void Board::OpenAdjacentCells(int row, int col, queue<int> *xQueue, queue<int> *yQueue, vector<int> *xVector, vector<int> *yVector)
 {
     if (arr[row][col].CheckIfBomb() || arr[row][col].IsUnlocked())
@@ -164,6 +179,9 @@ void Board::OpenAdjacentCells(int row, int col, queue<int> *xQueue, queue<int> *
         OpenAdjacentCells(row, col + 1, xQueue, yQueue, xVector, yVector);
     }
 }
+/*
+    Selecting cell to perform Open or Mark action upon
+*/
 bool Board::PlayerSelect(int row, int col, PlayerMove playerMove)
 {
     if (!boardGenerated && playerMove == Open)
@@ -210,6 +228,9 @@ bool Board::PlayerSelect(int row, int col, PlayerMove playerMove)
     }
     return true;
 }
+/*
+    Setting values for cells around the mines
+*/
 void Board::SetValuesAroundMine(int row, int col)
 {
     int minX, minY;
@@ -244,18 +265,17 @@ void Board::SetValuesAroundMine(int row, int col)
         }
     }
 }
+/*
+    Generates the board depending upon the size / difficulty
+    1. Set mines at random position (retry random pos if its equal to player input)
+    2. Increment adjacent cells next to mines
+*/
 void Board::GenerateBoard(int row, int col)
 {
-    /*
-        1. Set mines at random position (retry random pos if its equal to player input)
-        2. Increment adjacent cells next to mines
-    */
     int tempX, tempY;
     bool exists;
     for (int i = 0; i < mines; i++)
     {
-        // generate random row, random col
-        // compare with existing values
         do
         {
             exists = false;
@@ -277,23 +297,26 @@ void Board::GenerateBoard(int row, int col)
                 }
             }
         } while (exists);
-        // Set cell to bomb
         arr[tempX][tempY].SetBomb();
-        // push data into vector
         xCord.push_back(tempX);
         yCord.push_back(tempY);
     }
-    // Increment cells next to mines
     for (int i = 0; i < mines; i++)
     {
         SetValuesAroundMine(xCord[i], yCord[i]);
     }
     ShowBoard();
 }
+/*
+    Return if bomb has been clicked on
+*/
 bool Board::GetBombClick()
 {
     return bombClicked;
 }
+/*
+    Returns number of cells that are unlocked
+*/
 int Board::GetCellsOpened()
 {
     return cellsOpened;
