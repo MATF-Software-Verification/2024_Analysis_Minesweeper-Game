@@ -156,26 +156,37 @@ void Board::OpenAdjacentCells(int row, int col, queue<int> *xQueue, queue<int> *
     {
         return;
     }
-    // Opening top, down, left and right cells
-    // Check top
+    // Opening adjacent cells
+    int minX, minY;
+    int maxX, maxY;
+
     if (row - 1 >= 0)
-    {
-        OpenAdjacentCells(row - 1, col, xQueue, yQueue, xVector, yVector);
-    }
-    // Check bottom
-    if (row + 1 <= size - 1)
-    {
-        OpenAdjacentCells(row + 1, col, xQueue, yQueue, xVector, yVector);
-    }
-    // Check left
+        minX = row - 1;
+    else
+        minX = row;
     if (col - 1 >= 0)
-    {
-        OpenAdjacentCells(row, col - 1, xQueue, yQueue, xVector, yVector);
-    }
-    // Check right
+        minY = col - 1;
+    else
+        minY = col;
+
+    if (row + 1 <= size - 1)
+        maxX = row + 1;
+    else
+        maxX = row;
     if (col + 1 <= size - 1)
+        maxY = col + 1;
+    else
+        maxY = col;
+
+    for (int i = minX; i <= maxX; i++)
     {
-        OpenAdjacentCells(row, col + 1, xQueue, yQueue, xVector, yVector);
+        for (int j = minY; j <= maxY; j++)
+        {
+            if (i != row || j != col)
+            {
+                OpenAdjacentCells(i, j, xQueue, yQueue, xVector, yVector);
+            }
+        }
     }
 }
 /*
