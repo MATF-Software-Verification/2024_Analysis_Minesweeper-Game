@@ -69,6 +69,8 @@ private:
     bool bombClicked;
     vector<int> xCord;
     vector<int> yCord;
+    int cellsOpened;
+    int flagCount;
 
 public:
     Board(int, int);
@@ -80,6 +82,7 @@ public:
     void OpenAdjacentCells(int, int, queue<int> *, queue<int> *, vector<int> *, vector<int> *);
     bool GetBombClick();
     void UnlockBombs();
+    int GetCellsOpened();
 };
 
 class Minesweeper
@@ -98,4 +101,5 @@ public:
     void CreateBoard();
     void Play();
     void GetInput();
+    void CheckWin();
 };

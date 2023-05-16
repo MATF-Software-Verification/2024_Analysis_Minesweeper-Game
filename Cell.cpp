@@ -73,11 +73,14 @@ void Cell::IncreaseValue()
 }
 bool Cell::TriggerFlag()
 {
-    if (status == Unlocked)
-        return false;
     if (status == Locked)
+    {
         status = Flagged;
+        return true;
+    }
     else
+    {
         status = Locked;
-    return true;
+        return false;
+    }
 }

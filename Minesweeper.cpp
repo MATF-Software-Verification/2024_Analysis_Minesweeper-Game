@@ -17,15 +17,22 @@ void Minesweeper::Play()
     } while (gameState == Playing);
     if (gameState == Lost)
     {
-        cout << "You've clicked on a bomb!\n";
+        cout << "\nYou've clicked on a bomb!\n";
         board->UnlockBombs();
         board->ShowBoard();
         cout << "Better luck next time!\n";
     }
+    else if (gameState == Won)
+    {
+        cout << "\nCongratulations! You've won!\n";
+        board->UnlockBombs();
+        board->ShowBoard();
+        cout << "Thanks for playing!\n";
+    }
 }
 void Minesweeper::Instructions()
 {
-    cout << "\nWELCOME TO MINESWEEPER GAME!\n";
+    cout << "\nWELCOME TO THE MINESWEEPER GAME!\n";
     cout << "\nThese are the rules: \n";
     cout << "\n- The board is divided into cells, with mines randomly distributed.\n- To win, you need to open all the cells. \n- The number on a cell shows the number of mines adjacent to it. Using this information, you can determine cells that are safe, and cells that contain mines.\n- Interact, evolve and enjoy!\n\n";
 }
@@ -94,7 +101,6 @@ void Minesweeper::GetInput()
             cout << "\nEnter col (1 - " << size << "): ";
             cin >> col;
         } while (col < 1 || col > size);
-
         do
         {
             if (input < 1 || input > 2)
@@ -109,4 +115,12 @@ void Minesweeper::GetInput()
         else
             playerMove = Mark;
     } while (!board->PlayerSelect(row - 1, col - 1, playerMove));
+    if (playerMove == Open)
+        CheckWin();
+}
+void Minesweeper::CheckWin()
+{
+    int cellsOpened = board->GetCellsOpened();
+    if (cellsOpened == (size * size - mines))
+        gameState = Won;
 }
