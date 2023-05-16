@@ -8,15 +8,15 @@ using namespace std;
 Board::Board(int _size, int _mines)
 {
     cellsOpened = 0;
-    flagCount = mines;
-    bombClicked = false;
     size = _size;
     mines = _mines;
+    flagCount = mines;
     arr = new Cell *[size];
     for (int i = 0; i < size; i++)
     {
         arr[i] = new Cell[size]();
     }
+    bombClicked = false;
 }
 /*
     Displays the entire board along with rows and columns
@@ -138,16 +138,15 @@ void Board::OpenAdjacentCells(int row, int col, queue<int> *xQueue, queue<int> *
             if (xVector->at(i) == row && yVector->at(i) == col)
             {
                 alreadyPresent = true;
-            }
-            if (alreadyPresent)
                 break;
+            }
         }
     }
     if (alreadyPresent)
     {
         return;
     }
-    // Not present in queue
+    // Cell not present in queue
     // Add this cell to queue
     xQueue->push(row);
     yQueue->push(col);
@@ -157,8 +156,8 @@ void Board::OpenAdjacentCells(int row, int col, queue<int> *xQueue, queue<int> *
     {
         return;
     }
-    // Checking top down left and right
-    // check top
+    // Opening top, down, left and right cells
+    // Check top
     if (row - 1 >= 0)
     {
         OpenAdjacentCells(row - 1, col, xQueue, yQueue, xVector, yVector);
@@ -305,7 +304,6 @@ void Board::GenerateBoard(int row, int col)
     {
         SetValuesAroundMine(xCord[i], yCord[i]);
     }
-    ShowBoard();
 }
 /*
     Return if bomb has been clicked on

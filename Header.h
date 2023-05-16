@@ -48,9 +48,10 @@ enum PlayerMove
     Mark
 };
 /*
-    The current move of the user is recorded with this
-    Open - open the cell
-    Mark - flag / unflag the cell
+    Used to represent the status of the cell
+    - Locked
+    - Unlocked
+    - Flagged
 */
 enum Status
 {
@@ -83,8 +84,8 @@ public:
     void DisplayCell();
     void SetBomb();
     void IncreaseValue();
-    bool TriggerFlag();
     int OpenCell();
+    bool TriggerFlag();
     bool IsUnlocked();
     bool IsFlagged();
     bool CheckForZero();
@@ -99,13 +100,13 @@ class Board
 private:
     int size;
     Cell **arr;
-    bool boardGenerated;
     int mines;
+    int cellsOpened;
+    int flagCount;
+    bool boardGenerated;
     bool bombClicked;
     vector<int> xCord;
     vector<int> yCord;
-    int cellsOpened;
-    int flagCount;
 
 public:
     Board(int, int);
@@ -127,8 +128,8 @@ class Minesweeper
 private:
     Board *board;
     int size;
-    Difficulty difficulty;
     int mines;
+    Difficulty difficulty;
     GameState gameState;
 
 public:
