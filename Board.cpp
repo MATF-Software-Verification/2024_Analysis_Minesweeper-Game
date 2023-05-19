@@ -330,3 +330,14 @@ int Board::GetCellsOpened()
 {
     return cellsOpened;
 }
+/*
+    Destructor for the board class
+*/
+Board::~Board()
+{
+    for (int i = 0; i < size; i++)
+    {
+        delete arr[i];
+    }
+    delete arr;
+}

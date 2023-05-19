@@ -150,3 +150,10 @@ void Minesweeper::CheckWin()
     if (cellsOpened == (size * size - mines))
         gameState = Won;
 }
+/*
+    Destructor for the Minesweeper class
+*/
+Minesweeper::~Minesweeper()
+{
+    delete board;
+}

@@ -111,14 +111,15 @@ private:
 public:
     Board(int, int);
     void ShowBoard();
-    bool PlayerSelect(int, int, PlayerMove);
+    void UnlockBombs();
     void GenerateBoard(int, int);
     void SetValuesAroundMine(int, int);
-    bool ClickCell(int, int);
     void OpenAdjacentCells(int, int, queue<int> *, queue<int> *, vector<int> *, vector<int> *);
-    bool GetBombClick();
-    void UnlockBombs();
     int GetCellsOpened();
+    bool ClickCell(int, int);
+    bool PlayerSelect(int, int, PlayerMove);
+    bool GetBombClick();
+    ~Board();
 };
 /*
     This class acts as the Game Manager
@@ -140,4 +141,5 @@ public:
     void Play();
     void GetInput();
     void CheckWin();
+    ~Minesweeper();
 };
