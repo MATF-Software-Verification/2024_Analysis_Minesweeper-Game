@@ -1,0 +1,26 @@
+--------------------------------------------------------------------------------
+Profile data file 'valgrind/callgrind/callgrind.out.5' (creator: callgrind-3.22.0)
+--------------------------------------------------------------------------------
+I1 cache: 32768 B, 64 B, 8-way associative
+D1 cache: 32768 B, 64 B, 8-way associative
+LL cache: 8388608 B, 64 B, 16-way associative
+Timerange: Basic block 0 - 544835
+Trigger: Program termination
+Profiled target:  /mnt/c/Users/Milan Manojlovic/Minesweeper-Game/build-wsl/bin/ms_tests ~[interactive] (PID 1040, part 1)
+Events recorded:  Ir Dr Dw I1mr D1mr D1mw ILmr DLmr DLmw Bc Bcm Bi Bim
+Events shown:     Ir Dr Dw I1mr D1mr D1mw ILmr DLmr DLmw Bc Bcm Bi Bim
+Event sort order: Ir Dr Dw I1mr D1mr D1mw ILmr DLmr DLmw Bc Bcm Bi Bim
+Thresholds:       0 0 0 0 0 0 0 0 0 0 0 0 0
+Include dirs:     
+User annotated:   
+Auto-annotation:  on
+
+--------------------------------------------------------------------------------
+Ir Dr Dw I1mr D1mr D1mw ILmr DLmr DLmw Bc Bcm Bi Bim 
+--------------------------------------------------------------------------------
+.          .          .          .          .          .          .          .          .          .          .          .          .           PROGRAM TOTALS (calculated)
+
+--------------------------------------------------------------------------------
+Ir Dr Dw I1mr D1mr D1mw ILmr DLmr DLmw Bc Bcm Bi Bim  file:function
+--------------------------------------------------------------------------------
+

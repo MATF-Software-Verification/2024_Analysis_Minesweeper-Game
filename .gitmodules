@@ -1,0 +1,3 @@
+[submodule "external/Minesweeper-Game"]
+	path = external/Minesweeper-Game
+	url = https://github.com/RohithKKannan/Minesweeper-Game

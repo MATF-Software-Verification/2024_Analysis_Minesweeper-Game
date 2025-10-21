@@ -1,0 +1,97 @@
+*** SUGGESTED CHANGES (not applied to submodule) ***
+
+diff --git a/external/Minesweeper-Game/Header.h b/external/Minesweeper-Game/Header.h
+index 0000000..0000001 100644
+--- a/external/Minesweeper-Game/Header.h
++++ b/external/Minesweeper-Game/Header.h
+@@ -1,5 +1,6 @@
+ #include <iostream>
+ #include <queue>
++#include <vector>
+ using namespace std;
+
+@@
+ class Board
+ {
+ private:
+     int size;
+     Cell **arr;
+     int mines;
+     int cellsOpened;
+     int flagCount;
+     bool boardGenerated;
+     bool bombClicked;
+     vector<int> xCord;
+     vector<int> yCord;
+
+ public:
+     Board(int, int);
++    // copy is dangerous due to raw new[]; forbid it explicitly
++    Board(const Board&) = delete;
++    Board& operator=(const Board&) = delete;
+     void ShowBoard();
+     void UnlockBombs();
+     void GenerateBoard(int, int);
+     void SetValuesAroundMine(int, int);
+     void OpenAdjacentCells(int, int, queue<int> *, queue<int> *, vector<int> *, vector<int> *);
+-    int GetCellsOpened();
+-    bool GetBombClick();
++    int GetCellsOpened() /*const*/;
++    bool GetBombClick() /*const*/;
+     bool ClickCell(int, int);
+     bool PlayerSelect(int, int, PlayerMove);
+     ~Board();
+
+diff --git a/external/Minesweeper-Game/Board.cpp b/external/Minesweeper-Game/Board.cpp
+index 0000000..0000002 100644
+--- a/external/Minesweeper-Game/Board.cpp
++++ b/external/Minesweeper-Game/Board.cpp
+@@ -1,12 +1,19 @@
+ #include "Header.h"
+ #include <vector>
+ #include <queue>
+ using namespace std;
+ /*
+     Board class Constructor
+ */
+ Board::Board(int _size, int _mines)
+ {
+-    cellsOpened = 0;
+-    size = _size;
+-    mines = _mines;
+-    flagCount = mines;
++    // Initialize all members deterministically to avoid UB:
++    cellsOpened = 0;
++    size = _size;
++    mines = _mines;
++    flagCount = mines;
++    boardGenerated = false;    // <— cppcheck: uninitMemberVar
++    bombClicked = false;
+     arr = new Cell *[size];
+     for (int i = 0; i < size; i++)
+     {
+         arr[i] = new Cell[size]();
+     }
+-    bombClicked = false;
+ }
+@@
+ int Board::GetCellsOpened()
+ {
+     return cellsOpened;
+ }
+@@
+ bool Board::GetBombClick()
+ {
+     return bombClicked;
+ }
+@@
+ Board::~Board()
+ {
+     for (int i = 0; i < size; i++)
+     {
+-        delete arr[i];
++        delete[] arr[i];   // <— correct matching for new[]
+     }
+-    delete arr;
++    delete[] arr;         // <— correct matching for new[]
+ }

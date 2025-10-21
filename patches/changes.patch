@@ -1,0 +1,13 @@
+--- external/Minesweeper-Game/Board.cpp	2025-10-20 00:20:04.242094300 +0200
++++ /tmp/Board.cpp.fixed	2025-10-21 10:31:12.261072581 +0200
+@@ -337,7 +337,7 @@
+ {
+     for (int i = 0; i < size; i++)
+     {
+-        delete arr[i];
++        delete[] arr[i];
+     }
+-    delete arr;
++    delete[] arr;
+ }
+\ No newline at end of file
