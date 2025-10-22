@@ -5,6 +5,16 @@
 /.vs/
 /CMakeFiles/
 /CMakeCache.txt
+*.obj
+*.o
+*.pch
+*.pdb
+*.ilk
+*.exe
+*.dll
+*.lib
+*.exp
+*.log
 
 # VS Code
 /.vscode/*
