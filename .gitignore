@@ -14,11 +14,11 @@
 *.dll
 *.lib
 *.exp
-*.log
 
 # VS Code
 /.vscode/*
 !/.vscode/settings.json
+LastCoverageResults.log
 
 # Unit test coverage artefakti (OpenCppCoverage)
 unit_tests/coverage/
@@ -41,7 +41,6 @@ LastCoverageResults.log
 fuzz/ms_fuzz
 fuzzer
 rs_fuzz
-fuzz/logs/repro_20251021_101906.log
 fuzz/fuzzer
 fuzz/rs_fuzz
 fuzz/fuzz-0.log
