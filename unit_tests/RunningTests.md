@@ -1,7 +1,7 @@
 # RunningTests
 
 Ovaj projekat koristi **Catch2** za testove i **OpenCppCoverage** za pokrivenost koda.  
-Originalni projekat se nalazi kao git submodul u `external/Minesweeper-Game` (ne menja se).
+Originalni projekat se nalazi kao git submodul u `external/Minesweeper-Game`.
 
 ---
 
@@ -20,3 +20,4 @@ Set-Location "C:\Users\Milan Manojlovic\Minesweeper-Game"
 # Build
 & "C:\Program Files\Microsoft Visual Studio\2022\Community\Common7\IDE\CommonExtensions\Microsoft\CMake\CMake\bin\cmake.exe" `
   --build build --config Debug
+
