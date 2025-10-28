@@ -1,145 +1,154 @@
-﻿Checking C:\Users\Milan Manojlovic\Minesweeper-Game\external\Minesweeper-Game\Board.cpp ...
-cppcheck.exe : C:\Users\Milan Manojlovic\Minesweeper-Game\external\Minesweeper-Game\Board.cpp:0:0: information: 
-Limiting analysis of branches. Use --check-level=exhaustive to analyze all branches. [normalCheckLevelMaxBranches]
+﻿Checking C:\Users\Milan_Manojlovic\Desktop\minesweeper\2024_Analysis_Minesweeper-Game\external\Minesweeper-Game\Board.cpp ...
+cppcheck.exe : 
+C:\Users\Milan_Manojlovic\Desktop\minesweeper\2024_Analysis_Minesweeper-Game\external\Minesweeper-Game\Board.cpp:0:0: 
+information: Limiting analysis of branches. Use --check-level=exhaustive to analyze all branches. 
+[normalCheckLevelMaxBranches]
 At line:1 char:1
-+ & "C:\Program Files\Cppcheck\cppcheck.exe" --enable=all --inconclusiv ...
-+ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    + CategoryInfo          : NotSpecified: (C:\Users\Milan ...velMaxBranches]:String) [], RemoteException
++ & "$Cppcheck" --enable=all --inconclusive --std=c++17 `
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (C:\Users\Milan_...velMaxBranches]:String) [], RemoteException
     + FullyQualifiedErrorId : NativeCommandError
  
 
 ^
-C:\Users\Milan Manojlovic\Minesweeper-Game\external\Minesweeper-Game\Board.cpp:8:8: warning: Member variable 
-'Board::boardGenerated' is not initialized in the constructor. [uninitMemberVar]
+C:\Users\Milan_Manojlovic\Desktop\minesweeper\2024_Analysis_Minesweeper-Game\external\Minesweeper-Game\Board.cpp:8:8: 
+warning: Member variable 'Board::boardGenerated' is not initialized in the constructor. [uninitMemberVar]
 Board::Board(int _size, int _mines)
        ^
-C:\Users\Milan Manojlovic\Minesweeper-Game\external\Minesweeper-Game\Board.cpp:329:12: style: inconclusive: 
-Technically the member function 'Board::GetCellsOpened' can be const. [functionConst]
+C:\Users\Milan_Manojlovic\Desktop\minesweeper\2024_Analysis_Minesweeper-Game\external\Minesweeper-Game\Board.cpp:329:12
+: style: inconclusive: Technically the member function 'Board::GetCellsOpened' can be const. [functionConst]
 int Board::GetCellsOpened()
            ^
-C:\Users\Milan Manojlovic\Minesweeper-Game\external\Minesweeper-Game\Header.h:118:9: note: Technically the member 
-function 'Board::GetCellsOpened' can be const.
+C:\Users\Milan_Manojlovic\Desktop\minesweeper\2024_Analysis_Minesweeper-Game\external\Minesweeper-Game\Header.h:118:9: 
+note: Technically the member function 'Board::GetCellsOpened' can be const.
     int GetCellsOpened();
         ^
-C:\Users\Milan Manojlovic\Minesweeper-Game\external\Minesweeper-Game\Board.cpp:329:12: note: Technically the member 
-function 'Board::GetCellsOpened' can be const.
+C:\Users\Milan_Manojlovic\Desktop\minesweeper\2024_Analysis_Minesweeper-Game\external\Minesweeper-Game\Board.cpp:329:12
+: note: Technically the member function 'Board::GetCellsOpened' can be const.
 int Board::GetCellsOpened()
            ^
-C:\Users\Milan Manojlovic\Minesweeper-Game\external\Minesweeper-Game\Board.cpp:322:13: style: inconclusive: 
-Technically the member function 'Board::GetBombClick' can be const. [functionConst]
+C:\Users\Milan_Manojlovic\Desktop\minesweeper\2024_Analysis_Minesweeper-Game\external\Minesweeper-Game\Board.cpp:322:13
+: style: inconclusive: Technically the member function 'Board::GetBombClick' can be const. [functionConst]
 bool Board::GetBombClick()
             ^
-C:\Users\Milan Manojlovic\Minesweeper-Game\external\Minesweeper-Game\Header.h:121:10: note: Technically the member 
-function 'Board::GetBombClick' can be const.
+C:\Users\Milan_Manojlovic\Desktop\minesweeper\2024_Analysis_Minesweeper-Game\external\Minesweeper-Game\Header.h:121:10:
+ note: Technically the member function 'Board::GetBombClick' can be const.
     bool GetBombClick();
          ^
-C:\Users\Milan Manojlovic\Minesweeper-Game\external\Minesweeper-Game\Board.cpp:322:13: note: Technically the member 
-function 'Board::GetBombClick' can be const.
+C:\Users\Milan_Manojlovic\Desktop\minesweeper\2024_Analysis_Minesweeper-Game\external\Minesweeper-Game\Board.cpp:322:13
+: note: Technically the member function 'Board::GetBombClick' can be const.
 bool Board::GetBombClick()
             ^
-C:\Users\Milan Manojlovic\Minesweeper-Game\external\Minesweeper-Game\Board.cpp:14:5: warning: Class 'Board' does not 
-have a copy constructor which is recommended since it has dynamic memory/resource allocation(s). [noCopyConstructor]
+C:\Users\Milan_Manojlovic\Desktop\minesweeper\2024_Analysis_Minesweeper-Game\external\Minesweeper-Game\Board.cpp:14:5: 
+warning: Class 'Board' does not have a copy constructor which is recommended since it has dynamic memory/resource 
+allocation(s). [noCopyConstructor]
     arr = new Cell *[size];
     ^
-C:\Users\Milan Manojlovic\Minesweeper-Game\external\Minesweeper-Game\Board.cpp:14:5: warning: Class 'Board' does not 
-have a operator= which is recommended since it has dynamic memory/resource allocation(s). [noOperatorEq]
+C:\Users\Milan_Manojlovic\Desktop\minesweeper\2024_Analysis_Minesweeper-Game\external\Minesweeper-Game\Board.cpp:14:5: 
+warning: Class 'Board' does not have a operator= which is recommended since it has dynamic memory/resource 
+allocation(s). [noOperatorEq]
     arr = new Cell *[size];
     ^
-C:\Users\Milan Manojlovic\Minesweeper-Game\external\Minesweeper-Game\Board.cpp:300:26: style: Local variable 'i' 
-shadows outer variable [shadowVariable]
+C:\Users\Milan_Manojlovic\Desktop\minesweeper\2024_Analysis_Minesweeper-Game\external\Minesweeper-Game\Board.cpp:300:26
+: style: Local variable 'i' shadows outer variable [shadowVariable]
                 for (int i = 0; i < xCord.size(); i++)
                          ^
-C:\Users\Milan Manojlovic\Minesweeper-Game\external\Minesweeper-Game\Board.cpp:287:14: note: Shadowed declaration
+C:\Users\Milan_Manojlovic\Desktop\minesweeper\2024_Analysis_Minesweeper-Game\external\Minesweeper-Game\Board.cpp:287:14
+: note: Shadowed declaration
     for (int i = 0; i < mines; i++)
              ^
-C:\Users\Milan Manojlovic\Minesweeper-Game\external\Minesweeper-Game\Board.cpp:300:26: note: Shadow variable
+C:\Users\Milan_Manojlovic\Desktop\minesweeper\2024_Analysis_Minesweeper-Game\external\Minesweeper-Game\Board.cpp:300:26
+: note: Shadow variable
                 for (int i = 0; i < xCord.size(); i++)
                          ^
 1/5 files checked 53% done
-Checking C:\Users\Milan Manojlovic\Minesweeper-Game\external\Minesweeper-Game\Cell.cpp ...
-C:\Users\Milan Manojlovic\Minesweeper-Game\external\Minesweeper-Game\Cell.cpp:17:12: style: inconclusive: Technically 
-the member function 'Cell::DisplayCell' can be const. [functionConst]
+Checking C:\Users\Milan_Manojlovic\Desktop\minesweeper\2024_Analysis_Minesweeper-Game\external\Minesweeper-Game\Cell.cpp ...
+C:\Users\Milan_Manojlovic\Desktop\minesweeper\2024_Analysis_Minesweeper-Game\external\Minesweeper-Game\Cell.cpp:17:12: 
+style: inconclusive: Technically the member function 'Cell::DisplayCell' can be const. [functionConst]
 void Cell::DisplayCell()
            ^
-C:\Users\Milan Manojlovic\Minesweeper-Game\external\Minesweeper-Game\Header.h:84:10: note: Technically the member 
-function 'Cell::DisplayCell' can be const.
+C:\Users\Milan_Manojlovic\Desktop\minesweeper\2024_Analysis_Minesweeper-Game\external\Minesweeper-Game\Header.h:84:10: 
+note: Technically the member function 'Cell::DisplayCell' can be const.
     void DisplayCell();
          ^
-C:\Users\Milan Manojlovic\Minesweeper-Game\external\Minesweeper-Game\Cell.cpp:17:12: note: Technically the member 
-function 'Cell::DisplayCell' can be const.
+C:\Users\Milan_Manojlovic\Desktop\minesweeper\2024_Analysis_Minesweeper-Game\external\Minesweeper-Game\Cell.cpp:17:12: 
+note: Technically the member function 'Cell::DisplayCell' can be const.
 void Cell::DisplayCell()
            ^
-C:\Users\Milan Manojlovic\Minesweeper-Game\external\Minesweeper-Game\Cell.cpp:47:12: style: inconclusive: Technically 
-the member function 'Cell::IsUnlocked' can be const. [functionConst]
+C:\Users\Milan_Manojlovic\Desktop\minesweeper\2024_Analysis_Minesweeper-Game\external\Minesweeper-Game\Cell.cpp:47:12: 
+style: inconclusive: Technically the member function 'Cell::IsUnlocked' can be const. [functionConst]
 bool Cell::IsUnlocked()
            ^
-C:\Users\Milan Manojlovic\Minesweeper-Game\external\Minesweeper-Game\Header.h:89:10: note: Technically the member 
-function 'Cell::IsUnlocked' can be const.
+C:\Users\Milan_Manojlovic\Desktop\minesweeper\2024_Analysis_Minesweeper-Game\external\Minesweeper-Game\Header.h:89:10: 
+note: Technically the member function 'Cell::IsUnlocked' can be const.
     bool IsUnlocked();
          ^
-C:\Users\Milan Manojlovic\Minesweeper-Game\external\Minesweeper-Game\Cell.cpp:47:12: note: Technically the member 
-function 'Cell::IsUnlocked' can be const.
+C:\Users\Milan_Manojlovic\Desktop\minesweeper\2024_Analysis_Minesweeper-Game\external\Minesweeper-Game\Cell.cpp:47:12: 
+note: Technically the member function 'Cell::IsUnlocked' can be const.
 bool Cell::IsUnlocked()
            ^
-C:\Users\Milan Manojlovic\Minesweeper-Game\external\Minesweeper-Game\Cell.cpp:57:12: style: inconclusive: Technically 
-the member function 'Cell::IsFlagged' can be const. [functionConst]
+C:\Users\Milan_Manojlovic\Desktop\minesweeper\2024_Analysis_Minesweeper-Game\external\Minesweeper-Game\Cell.cpp:57:12: 
+style: inconclusive: Technically the member function 'Cell::IsFlagged' can be const. [functionConst]
 bool Cell::IsFlagged()
            ^
-C:\Users\Milan Manojlovic\Minesweeper-Game\external\Minesweeper-Game\Header.h:90:10: note: Technically the member 
-function 'Cell::IsFlagged' can be const.
+C:\Users\Milan_Manojlovic\Desktop\minesweeper\2024_Analysis_Minesweeper-Game\external\Minesweeper-Game\Header.h:90:10: 
+note: Technically the member function 'Cell::IsFlagged' can be const.
     bool IsFlagged();
          ^
-C:\Users\Milan Manojlovic\Minesweeper-Game\external\Minesweeper-Game\Cell.cpp:57:12: note: Technically the member 
-function 'Cell::IsFlagged' can be const.
+C:\Users\Milan_Manojlovic\Desktop\minesweeper\2024_Analysis_Minesweeper-Game\external\Minesweeper-Game\Cell.cpp:57:12: 
+note: Technically the member function 'Cell::IsFlagged' can be const.
 bool Cell::IsFlagged()
            ^
-C:\Users\Milan Manojlovic\Minesweeper-Game\external\Minesweeper-Game\Cell.cpp:67:12: style: inconclusive: Technically 
-the member function 'Cell::CheckForZero' can be const. [functionConst]
+C:\Users\Milan_Manojlovic\Desktop\minesweeper\2024_Analysis_Minesweeper-Game\external\Minesweeper-Game\Cell.cpp:67:12: 
+style: inconclusive: Technically the member function 'Cell::CheckForZero' can be const. [functionConst]
 bool Cell::CheckForZero()
            ^
-C:\Users\Milan Manojlovic\Minesweeper-Game\external\Minesweeper-Game\Header.h:91:10: note: Technically the member 
-function 'Cell::CheckForZero' can be const.
+C:\Users\Milan_Manojlovic\Desktop\minesweeper\2024_Analysis_Minesweeper-Game\external\Minesweeper-Game\Header.h:91:10: 
+note: Technically the member function 'Cell::CheckForZero' can be const.
     bool CheckForZero();
          ^
-C:\Users\Milan Manojlovic\Minesweeper-Game\external\Minesweeper-Game\Cell.cpp:67:12: note: Technically the member 
-function 'Cell::CheckForZero' can be const.
+C:\Users\Milan_Manojlovic\Desktop\minesweeper\2024_Analysis_Minesweeper-Game\external\Minesweeper-Game\Cell.cpp:67:12: 
+note: Technically the member function 'Cell::CheckForZero' can be const.
 bool Cell::CheckForZero()
            ^
-C:\Users\Milan Manojlovic\Minesweeper-Game\external\Minesweeper-Game\Cell.cpp:87:12: style: inconclusive: Technically 
-the member function 'Cell::CheckIfBomb' can be const. [functionConst]
+C:\Users\Milan_Manojlovic\Desktop\minesweeper\2024_Analysis_Minesweeper-Game\external\Minesweeper-Game\Cell.cpp:87:12: 
+style: inconclusive: Technically the member function 'Cell::CheckIfBomb' can be const. [functionConst]
 bool Cell::CheckIfBomb()
            ^
-C:\Users\Milan Manojlovic\Minesweeper-Game\external\Minesweeper-Game\Header.h:92:10: note: Technically the member 
-function 'Cell::CheckIfBomb' can be const.
+C:\Users\Milan_Manojlovic\Desktop\minesweeper\2024_Analysis_Minesweeper-Game\external\Minesweeper-Game\Header.h:92:10: 
+note: Technically the member function 'Cell::CheckIfBomb' can be const.
     bool CheckIfBomb();
          ^
-C:\Users\Milan Manojlovic\Minesweeper-Game\external\Minesweeper-Game\Cell.cpp:87:12: note: Technically the member 
-function 'Cell::CheckIfBomb' can be const.
+C:\Users\Milan_Manojlovic\Desktop\minesweeper\2024_Analysis_Minesweeper-Game\external\Minesweeper-Game\Cell.cpp:87:12: 
+note: Technically the member function 'Cell::CheckIfBomb' can be const.
 bool Cell::CheckIfBomb()
            ^
 2/5 files checked 67% done
-Checking C:\Users\Milan Manojlovic\Minesweeper-Game\external\Minesweeper-Game\Main.cpp ...
+Checking C:\Users\Milan_Manojlovic\Desktop\minesweeper\2024_Analysis_Minesweeper-Game\external\Minesweeper-Game\Main.cpp ...
 3/5 files checked 68% done
-Checking C:\Users\Milan Manojlovic\Minesweeper-Game\external\Minesweeper-Game\Minesweeper.cpp ...
-C:\Users\Milan Manojlovic\Minesweeper-Game\external\Minesweeper-Game\Minesweeper.cpp:0:0: information: Limiting 
-analysis of branches. Use --check-level=exhaustive to analyze all branches. [normalCheckLevelMaxBranches]
+Checking C:\Users\Milan_Manojlovic\Desktop\minesweeper\2024_Analysis_Minesweeper-Game\external\Minesweeper-Game\Minesweeper.cpp ...
+C:\Users\Milan_Manojlovic\Desktop\minesweeper\2024_Analysis_Minesweeper-Game\external\Minesweeper-Game\Minesweeper.cpp:
+0:0: information: Limiting analysis of branches. Use --check-level=exhaustive to analyze all branches. 
+[normalCheckLevelMaxBranches]
 
 ^
-C:\Users\Milan Manojlovic\Minesweeper-Game\external\Minesweeper-Game\Minesweeper.cpp:41:19: performance: inconclusive: 
-Technically the member function 'Minesweeper::Instructions' can be static (but you may consider moving to unnamed 
-namespace). [functionStatic]
+C:\Users\Milan_Manojlovic\Desktop\minesweeper\2024_Analysis_Minesweeper-Game\external\Minesweeper-Game\Minesweeper.cpp:
+41:19: performance: inconclusive: Technically the member function 'Minesweeper::Instructions' can be static (but you 
+may consider moving to unnamed namespace). [functionStatic]
 void Minesweeper::Instructions()
                   ^
-C:\Users\Milan Manojlovic\Minesweeper-Game\external\Minesweeper-Game\Header.h:138:10: note: Technically the member 
-function 'Minesweeper::Instructions' can be static (but you may consider moving to unnamed namespace).
+C:\Users\Milan_Manojlovic\Desktop\minesweeper\2024_Analysis_Minesweeper-Game\external\Minesweeper-Game\Header.h:138:10:
+ note: Technically the member function 'Minesweeper::Instructions' can be static (but you may consider moving to 
+unnamed namespace).
     void Instructions();
          ^
-C:\Users\Milan Manojlovic\Minesweeper-Game\external\Minesweeper-Game\Minesweeper.cpp:41:19: note: Technically the 
-member function 'Minesweeper::Instructions' can be static (but you may consider moving to unnamed namespace).
+C:\Users\Milan_Manojlovic\Desktop\minesweeper\2024_Analysis_Minesweeper-Game\external\Minesweeper-Game\Minesweeper.cpp:
+41:19: note: Technically the member function 'Minesweeper::Instructions' can be static (but you may consider moving to 
+unnamed namespace).
 void Minesweeper::Instructions()
                   ^
 4/5 files checked 96% done
-Checking C:\Users\Milan Manojlovic\Minesweeper-Game\external\Minesweeper-Game\Utility.cpp ...
+Checking C:\Users\Milan_Manojlovic\Desktop\minesweeper\2024_Analysis_Minesweeper-Game\external\Minesweeper-Game\Utility.cpp ...
 5/5 files checked 100% done
 nofile:0:0: information: Active checkers: 181/966 (use --checkers-report=<filename> to see details) [checkersReport]
 

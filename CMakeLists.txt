@@ -32,6 +32,8 @@ FetchContent_MakeAvailable(catch2)
 add_executable(ms_tests
     unit_tests/tests/test_board.cpp
     unit_tests/tests/test_gameplay.cpp
+    unit_tests/tests/test_comprehensive.cpp
+    unit_tests/tests/test_minesweeper_advanced.cpp
 )
 
 target_link_libraries(ms_tests PRIVATE ms_core Catch2::Catch2WithMain)

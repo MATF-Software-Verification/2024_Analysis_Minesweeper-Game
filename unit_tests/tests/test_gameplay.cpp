@@ -21,3 +21,4 @@ TEST_CASE("Minesweeper high-level flow calls do not crash", "[interactive]") {
     // CheckWin obično proverava stanje; trebalo bi da je bezbedno pozvati ga pre igre.
     REQUIRE_NOTHROW(game.CheckWin());
 }
+
